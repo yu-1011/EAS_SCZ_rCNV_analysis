@@ -1,0 +1,195 @@
+#wd: /home/yu/work/proj-cnv/burden_test/
+wd="/home/yu/work/proj-cnv/burden_test"
+cnvfile="/mnt/disks/sdb/1_sc_asia/162_cnv_QCed_yu/CNV_QC/EAS_all_cohort_2023_12_30/cfile_final"
+genefile="/mnt/disks/sdb/1_sc_asia/240_annotation_file/ucsc.hg19.knowgene.exon.plink.txt"
+phe_file="/home/yu/work/proj-cnv/burden_test/input/EAS_all_cohorts.phe"
+pi_hat_matrix="/mnt/disks/sdb/1_sc_asia/220_sc_asia_phe_modified/all_samples.gmat"
+
+#platform
+test_type="platform"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_platform/03_1_cnvburden_CNV_platform.r \
+${wd}/burden_platform \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${output} > $wd"/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".log"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_platform/03_1_cnvburden_CNV_platform_v2.r \
+${wd}/burden_platform \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${output} > $wd"/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")"_test.log"
+
+
+#study
+#phe_file="/home/yu/work/proj-cnv/burden_test/input/EAS_all_cohorts_final_nopush2.phe"
+test_type="study"
+#phe_file="/home/yu/work/proj-cnv/burden_test/input/EAS_push2_cohort_final.phe"
+#test_type="study_push2"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_study/03_1_cnvburden_CNV_burden_study.r \
+${wd}/burden_study \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${output} > $wd"/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".log"
+
+
+#known_loci
+test_type="novel_loci"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_known_loci/03_1_cnvburden_CNV_burden_known_loci.r \
+${wd}/burden_known_loci \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${output} > $wd"/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".log"
+
+#all_loci
+test_type="all_loci"
+loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_all_loci/cytoBand.hg19.txt" 
+#loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/dup_16p13.11_region.txt" 
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_known_loci/03_1_cnvburden_CNV_burden_all_loci.r \
+${wd}/burden_known_loci \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${loci_file} \
+${output}
+
+#previous_loci
+for i in $(awk '{print $4"_region.txt"}' /home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/hg19_EAS_sigloci_Table.txt)
+do
+test_type="previous_loci_assoc"
+loci_file=/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/$i
+#loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/hg19_sigloci_Table.txt" 
+#loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/dup_16p13.11_region.txt" 
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$i"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_known_loci/03_1_cnvburden_CNV_burden_previous_loci.r \
+${wd}/burden_known_loci \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${loci_file} \
+${output} > $wd"/burden_EAS_"${test_type}"_"$i"_"$(date "+%Y_%m_%d")".log"
+done
+
+
+cat burden_EAS_previous_loci_assoc_*.burden|awk '!a[$0]++{print}' > burden_EAS_previous_loci_assoc_$(date "+%Y_%m_%d").burden
+
+#all interaction
+test_type="all_interaction"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_all/03_1_cnvburden_CNV_burden_all.r \
+${wd}/burden_all \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${output}
+
+## for EUR -hg18
+wd="/home/yu/work/proj-cnv/burden_test"
+cnvfile="/mnt/disks/sdb/1_sc_asia/162_cnv_QCed_yu/CNV_QC/eur_cohort/270_From_Dan/PGC_41K_QC"
+genefile="/mnt/disks/sdb/1_sc_asia/240_annotation_file/ensemble_exon_genelist.plink.txt"
+phe_file="/mnt/disks/sdb/1_sc_asia/162_cnv_QCed_yu/CNV_QC/eur_cohort/EUR_cohort/PGC_41K_QC.phe"
+
+#platform
+test_type="platform"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EUR_"${test_type}"_hg18_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_EUR/03_1_cnvburden_CNV_EUR_platform_v2.r \
+${wd}/burden_EUR \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${output}
+
+#previous_loci
+test_type="previous_loci"
+#loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg18_loci/dup_16p13.11_region.txt"
+loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg18_loci/hg18_implicatedCNV_NG2017_Table.txt"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EUR_"${test_type}"_hg18_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_EUR/03_1_cnvburden_CNV_burden_previous_loci.r \
+${wd}/burden_EUR \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${loci_file} \
+${output}
+
+#gene_associate
+Rscript /home/yu/work/proj-cnv/burden_test/burden_gene/03_1_cnvburden_CNV_burden_gene.r \
+${wd}/burden_gene \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${loci_file} \
+${output}
+
+
+#specific study
+## change the phe file
+cnvfile="/mnt/disks/sdb/1_sc_asia/162_cnv_QCed_yu/CNV_QC/EAS_Yue_push2_cohort/Yue_push2_cfile_final"
+phe_file="/home/yu/work/proj-cnv/burden_test/input/EAS_push2_cohort_final.phe"
+test_type="study_push2_keep_sex_warn"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EAS_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_study/03_1_cnvburden_CNV_burden_study.r \
+${wd}/burden_study \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${pi_hat_matrix} \
+${output}
+
+## for EUR -hg19
+wd="/home/yu/work/proj-cnv/burden_test"
+cnvfile="/home/yu/work/proj-cnv/burden_test/input/EUR/PGC_41K_QC_hg19_cohort/PGC_41K_QC_hg19_cfile_final"
+genefile="/mnt/disks/sdb/1_sc_asia/240_annotation_file/ucsc.hg19.knowgene.exon.plink.txt"
+phe_file="/mnt/disks/sdb/1_sc_asia/162_cnv_QCed_yu/CNV_QC/eur_cohort/EUR_cohort/PGC_41K_QC.phe"
+
+#platform
+test_type="platform"
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EUR_"${test_type}"_hg19_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_EUR/03_1_cnvburden_CNV_EUR_platform_v2.r \
+${wd}/burden_EUR \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${output}
+
+
+#previous_loci
+test_type="previous_loci"
+#loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/hg19_implicatedCNV_NG2017_Table.txt" 
+loci_file="/home/yu/work/proj-cnv/burden_test/burden_known_loci/misc/hg19_loci/hg19_sigloci_Table_test.txt" 
+output="/home/yu/work/proj-cnv/burden_test/output/burden_EUR_"${test_type}"_"$(date "+%Y_%m_%d")".result"
+
+Rscript /home/yu/work/proj-cnv/burden_test/burden_EUR/03_1_cnvburden_CNV_burden_previous_loci_hg19.r \
+${wd}/burden_gene \
+${cnvfile} \
+${genefile} \
+${phe_file} \
+${loci_file} \
+${output} 
+
+
+
