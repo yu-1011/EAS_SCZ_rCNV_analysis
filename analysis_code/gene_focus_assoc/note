@@ -1,0 +1,47 @@
+#Mapping rCNVs to genes
+##usage: 01_cnv_to_ped ${cnv_type}
+python 01_cnv_to_ped.py all
+python 01_cnv_to_ped.py del
+python 01_cnv_to_ped.py dup
+
+#Transforming ped file to bfile
+##qsub 02_ped_to_bed.sh ${cnv_type}
+qsub 02_ped_to_bed.sh all
+qsub 02_ped_to_bed.sh del
+qsub 02_ped_to_bed.sh dup
+
+#Performing association test
+##qsub 03_association.sh ${cnv_type}
+qsub -N association 03_association.sh all
+qsub -N association 03_association.sh del
+qsub -N association 03_association.sh dup
+
+#Setting up the permutation phenotype file
+##usage: python 04_random_phe_file.py 
+python 04_random_phe_file.py 
+
+#Setting up the permutation bfile
+#usage: python 05_cnv_to_ped_permute.py ${cnv_type}
+python 05_cnv_to_ped_permute.py all
+python 05_cnv_to_ped_permute.py del
+python 05_cnv_to_ped_permute.py dup
+
+qsub 06_ped_to_bed_permute.sh all
+qsub 06_ped_to_bed_permute.sh del
+qsub 06_ped_to_bed_permute.sh dup
+
+#Permuation association
+##usage qsub -t 1-${permutation_times} -N permute_assoc 05_permute_assoc.sh ${cnv_type}
+qsub -t 1-100 -N permute_assoc 05_permute_assoc.sh del
+qsub -t 1-100 -N permute_assoc 05_permute_assoc.sh dup
+qsub -t 1-100 -N permute_assoc 05_permute_assoc.sh all
+
+#Checking the threshold
+##usage: python 08_permute_threshold_v2.py
+python 08_permute_threshold_v2.py
+
+#Summarizing the rCNVs carrier number for each genes
+##usage: qsub -t 1-20345 -N make_gene_cnv_matrix 07_make_gene_cnv_matrix.sh ${cfile_final} ${phe_FILE} ${gencode.v19.gene.annot.bed} ${output}
+qsub -t 1-20345 -N make_gene_cnv_matrix 07_make_gene_cnv_matrix.sh /stanley/huang_lab/home/ychen/proj-CNV/07CNV_gene_association/01EAS_gene_assoc/input/cfile_final /stanley/huang_lab/home/ychen/proj-CNV/07CNV_gene_association/01EAS_gene_assoc/input/EAS_all_cohorts.phe /stanley/huang_lab/home/ychen/proj-CNV/misc/gencode.v19.gene.annot.bed /stanley/huang_lab/home/ychen/proj-CNV/07CNV_gene_association/01EAS_gene_assoc/intermediate/gene
+
+
