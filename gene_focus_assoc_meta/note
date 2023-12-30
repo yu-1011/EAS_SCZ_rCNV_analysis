@@ -1,0 +1,11 @@
+qsub -t 1:100 01_input_format.sh del
+qsub -t 1:100 01_input_format.sh dup
+
+qsub 02_meta.sh del
+qsub 02_meta.sh dup
+
+qsub -t 1:100 03_permute_meta.sh del
+qsub -t 1:100 03_permute_meta.sh dup
+
+python 04_permute_threshold_v2.py del
+python 04_permute_threshold_v2.py dup
