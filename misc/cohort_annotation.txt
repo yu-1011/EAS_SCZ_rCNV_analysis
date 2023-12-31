@@ -14,6 +14,4 @@
 13	xajd	Ma_xajd	ASA-24v1-0_A1.bpm	ASA-24v1-0_A1_ClusterFile.egt	ASA-24v1-0_A1.csv	xjdsz	scz_xjdsz_eur_qf_GSAA	ASA	ASA-24v1-0_A1	asian	Mainland China	1064
 14	xju1	Release_Qin_biox6	InfiniumOmniZhongHua-8v1-3_A1.bpm	InfiniumOmniZhongHua-8v1-3_A1_ClusterFile.egt	InfiniumOmniZhongHua-8v1-3_A1.csv	xju1	scz_xju1_asn_ml_Om25	Om25	InfiniumOmniZhongHua-8v1-3_A1	asian	Mainland China	2515
 15	xju2	Staging_Ma_xju2	ASA-24v1-0_A1.bpm	ASA-24v1-0_A1_ClusterFile.egt	ASA-24v1-0_A1.csv	xju2	scz_xju2_asn_yc_GSAA	ASA	ASA-24v1-0_A1	asian	Mainland China	3048
-16	sxyh1	Release_Tang_sxyh1	ASA-24v1-0_A1.bpm	ASA-24v1-0_A1_ClusterFile.egt	ASA-24v1-0_A1.csv	sxyh1	scz_sxyh1_asn_yc	ASA	ASA-24v1-0_A1	asian	Mainland China	6273
-17	six2	Release_Kahn	InfiniumPsychArray-24v1-1_A1.bpm	InfiniumPsychArray-24v1-1_A1_ClusterFile.egt	InfiniumPsychArray-24v1-1_A1.csv	umc1	scz_umc1_asn_ml	PSYC	InfiniumPsychArray-24v1-1_A1	asian	Mainland China	4141
-18	six2	Release_Kahn	InfiniumPsychArray-24v1-1_A1.bpm	InfiniumPsychArray-24v1-1_A1_ClusterFile.egt	InfiniumPsychArray-24v1-1_A1.csv	six1	scz_six1_asn_hh_PSYC	PSYC	InfiniumPsychArray-24v1-1_A1	asian	Mainland China	4141
+InfiniumPsychArray-24v1-1_A1.csv	six1	scz_six1_asn_hh_PSYC	PSYC	InfiniumPsychArray-24v1-1_A1	asian	Mainland China	4141
