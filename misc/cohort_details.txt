@@ -1,0 +1,18 @@
+cohort	bpm_file	egt_file	csv_file	dataset_id	fam_file_cohort	fam_file_cohort_full_name	array_type	array_full_name	population	region
+Staging_Ma_xju2	ASA-24v1-0_A1.bpm	ASA-24v1-0_A1_ClusterFile.egt	ASA-24v1-0_A1.csv	xju2	xju2	scz_xju2_asn_yc_GSAA	ASA	ASA-24v1-0_A1	asian	Mainland China
+Release_Tang_sxyh1	ASA-24v1-0_A1.bpm	ASA-24v1-0_A1_ClusterFile.egt	ASA-24v1-0_A1.csv	sxyh1	xyscz	scz_xyscz_eur_qf_GSAA	ASA	ASA-24v1-0_A1	asian	Mainland China
+Ma_xajd	ASA-24v1-0_A1.bpm	ASA-24v1-0_A1_ClusterFile.egt	ASA-24v1-0_A1.csv	xajd	xjdsz	scz_xjdsz_eur_qf_GSAA	ASA	ASA-24v1-0_A1	asian	Mainland China
+Release_Sawa_tmim1	GSA-24v1-0_C1.bpm	GSA-24v1-0_C1_ClusterFile.egt	GSA-24v1-0_C1.csv	tmim1	tmim1	scz_tmim1_asn_yc_GSAA	GSAA	GSA-24v1-0_C1	asian	Japan
+Release_Sawa_tmim3	GSA-24v3-0_A1.bpm	GSA-24v3-0_A1_ClusterFile.egt	GSA-24v3-0_A1.csv	tmim3	swscz	scz_swscz_eur_qf_GSAA	GSAA	GSA-24v3-0_A1	asian	Japan
+Tai1_multiplex	GSA-24v3-0_A1.bpm	GSA-24v3-0_A1_ClusterFile.egt	GSA-24v3-0_A1.csv	taiml	taiml	scz_taiml_eur_qf_GSAA	GSAA	GSA-24v3-0_A1	asian	Taiwan
+tai2trios	GSA-24v3-0_A1.bpm	GSA-24v3-0_A1_ClusterFile.egt	GSA-24v3-0_A1.csv	tai2t	tai2t	scz_tai2t_asn_yc_GSAA	GSAA	GSA-24v3-0_A1	asian	Taiwan
+Release_Qin_biox4	GSAMD-24v1-0_20011747_A1.bpm	GSA-24v1-0_A1_ClusterFile.egt	GSAMD-24v1-0_20011747_A1.csv	biox4	bix4	scz_bix4_asn_hh_Il5M	GSAA	GSAMD-24v1-0_20011747_A1	asian	Mainland China
+Lee_imh1	Human1M-Duov3_H.bpm	Human1M-Duov3_H.egt	Human1M-Duov3_H.csv	imh1	imh1	scz_imh1_asn_ml_Il1M	Il1M	Human1M-Duov3_H	asian	Singapore
+Release_Qin_biox6	InfiniumOmniZhongHua-8v1-3_A1.bpm	InfiniumOmniZhongHua-8v1-3_A1_ClusterFile.egt	InfiniumOmniZhongHua-8v1-3_A1.csv	xju1	xju1	scz_xju1_asn_ml_Om25	Om25	InfiniumOmniZhongHua-8v1-3_A1	asian	Mainland China
+Lee_imh2	InfiniumOmniZhongHua-8v1-3_A1.bpm	InfiniumOmniZhongHua-8v1-3_A1_ClusterFile.egt	InfiniumOmniZhongHua-8v1-3_A1.csv	imh2	imh2	scz_imh2_asn_ml_Om25	Om25	InfiniumOmniZhongHua-8v1-3_A1	asian	Singapore
+Yue_push2	InfiniumOmniZhongHua-8v1-3_A1.bpm	InfiniumOmniZhongHua-8v1-3_A1_ClusterFile.egt	InfiniumOmniZhongHua-8v1-3_A1.csv	push2	bjscz	scz_bjscz_eur_qf_Om25	Om25	InfiniumOmniZhongHua-8v1-3_A1	asian	Mainland China
+Release_Kahn	InfiniumPsychArray-24v1-1_A1.bpm	InfiniumPsychArray-24v1-1_A1_ClusterFile.egt	InfiniumPsychArray-24v1-1_A1.csv	six1	six1	scz_six1_asn_hh_PSYC	PSYC	InfiniumPsychArray-24v1-1_A1	asian	Mainland China
+Release_Kahn	InfiniumPsychArray-24v1-1_A1.bpm	InfiniumPsychArray-24v1-1_A1_ClusterFile.egt	InfiniumPsychArray-24v1-1_A1.csv	umc1	umc1	scz_umc1_asn_ml_PSYC	PSYC	InfiniumPsychArray-24v1-1_A1	asian	Mainland China
+Release_Schwab_uwa1	PsychArray-B.bpm	PsychArray_A_ClusterFile.egt	PsychArray-B.csv	uwa1	uwa1	scz_uwa1_asn_hh_PSYC	PSYC	PsychArray-B	asian	Indonesian
+Staging_Tsuang_tai3	PsychArray-B.bpm	PsychArray_A_ClusterFile.egt	PsychArray-B.csv	tai3	tascz	scz_tascz_eur_qf_PSYC	PSYC	PsychArray-B	asian	Taiwan
+Release_Kahn	InfiniumPsychArray-24v1-1_A1.bpm	InfiniumPsychArray-24v1-1_A1_ClusterFile.egt	InfiniumPsychArray-24v1-1_A1.csv	six2	six2	scz_six1_asn_hh_PSYC	PSYC	InfiniumPsychArray-24v1-1_A1	asian	Mainland China
