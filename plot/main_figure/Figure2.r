@@ -12,7 +12,6 @@ rm(list=ls())
 
 cohort_colors <- c(
   EUR = "#BE1E2D",
-  #EAS = "#0087FF",
   EAS = "#3182BD",
   'Novel Regions' = "#7ec0ee",
   'All Regions' = "#A9A9A9")
