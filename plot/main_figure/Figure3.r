@@ -17,7 +17,6 @@ set.seed(123)
 
 cohort_colors <- c(
   EUR = "#BE1E2D",
-  #EAS = "#0087FF",
   EAS = "#3182BD",
   'Deletion' = "#ff7f0e",
   'Duplication' = "#2ca02c",
